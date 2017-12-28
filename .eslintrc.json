@@ -1,0 +1,15 @@
+{
+  "extends": ["plugin:react/recommended", "eslint-config-airbnb-base", "prettier"],
+
+  "plugins": ["react", "prettier"],
+
+  "env": {
+    "browser": true
+  },
+
+  "rules": {
+    "prettier/prettier": "error"
+  },
+
+  "parser": "babel-eslint"
+}

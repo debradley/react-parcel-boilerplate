@@ -1,0 +1,61 @@
+{
+  "name": "react-real-world-parcel",
+  "version": "1.0.0",
+  "description": "A learning spike for using parcel with a very simple React component with a realistic project setup.",
+  "main": "src/app/index.jsx",
+  "repository": "git@github.com:debradley/react-real-world-parcel.git",
+  "author": "Dan Bradley <debradley@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel src/app/index.html -d docs",
+    "build": "parcel build src/app/index.* -d docs",
+    "lint-staged": "lint-staged",
+    "lint-js": "eslint --fix 'src/**/*.{js,jsx}'",
+    "lint-css": "prettier --write 'src/**/*.css'",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "src/**/*.css": [
+      "prettier --write",
+      "stylelint --fix",
+      "git add"
+    ],
+    "src/**/*.{json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "normalize.css": "^7.0.0",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-helmet": "^5.2.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.13.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-prettier": "^2.4.0",
+    "eslint-plugin-react": "^7.5.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.0.0",
+    "parcel-bundler": "^1.2.0",
+    "postcss-cli": "^4.1.1",
+    "postcss-cssnext": "^3.0.2",
+    "prettier": "^1.9.2",
+    "stylelint": "^8.4.0",
+    "stylelint-config-standard": "^18.0.0"
+  }
+}

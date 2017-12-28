@@ -1,0 +1,19 @@
+.time {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Nobile", sans-serif;
+  font-size: 15vw;
+  font-weight: 400;
+  height: 100%;
+  width: 100%;
+  color: var(--primary-text-color);
+  background-color: var(--primary-background-color);
+}
+
+.time__text {
+  color: var(--primary-text-color);
+  letter-spacing: -0.5vw;
+  font-weight: 200;
+}

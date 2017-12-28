@@ -1,0 +1,13 @@
+.app__prompt {
+  font-size: 8vw;
+  color: white;
+  text-align: center;
+  font-weight: 400;
+}
+
+.app__choices {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

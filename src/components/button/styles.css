@@ -1,0 +1,21 @@
+.button {
+  font-size: 6vw;
+  background-color: var(--primary-text-color);
+  color: var(--primary-background-color);
+  width: 45vw;
+  padding: 2vw;
+  line-height: 1.5;
+  font-weight: 100;
+  border: none;
+  margin-top: 3vw;
+  cursor: pointer;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

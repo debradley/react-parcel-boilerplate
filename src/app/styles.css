@@ -1,0 +1,45 @@
+@import "normalize.css/normalize.css";
+
+:root {
+  --primary-background-color: #727687;
+  --primary-text-color: #a6abbd;
+  --secondary-background-color: tomato;
+  --secondary-text-color: rgb(255, 250, 240);
+  --spinner-foreground-color: var(--secondary-text-color);
+  --spinner-background-color: rgba(255, 250, 240, 0.2);
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Nobile", sans-serif;
+  font-size: 15vw;
+  font-weight: 400;
+  height: 100%;
+  width: 100%;
+  color: var(--primary-text-color);
+  background-color: var(--primary-background-color);
+}
+
+.app__loading {
+  color: var(--secondary-text-color);
+  letter-spacing: -0.5vw;
+  font-weight: 200;
+}
