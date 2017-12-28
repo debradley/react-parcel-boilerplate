@@ -8,8 +8,8 @@
   "author": "Dan Bradley <debradley@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "parcel src/app/index.html -d docs",
-    "build": "parcel build src/app/index.* -d docs",
+    "start": "parcel src/app/index.html",
+    "build": "parcel build src/app/index.*",
     "lint-staged": "lint-staged",
     "lint-js": "eslint --fix 'src/**/*.{js,jsx}'",
     "lint-css": "prettier --write 'src/**/*.css'",

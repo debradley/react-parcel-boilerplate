@@ -6,7 +6,7 @@ My intent in this spike is to begin moving towards a realistic boilerplate, addi
 * :white_check_mark: scripts create separate development and production builds (built-in to parcel)
 * :white_check_mark: use hot reloading during development (built-in to parcel)
 * :x: create a separate vendor pack, for caching efficiency (doesn't seem to be an option in parcel)
-* lint CSS and JavaScript on demand or on commit
+* :white_check_mark: lint CSS and JavaScript on demand or on commit
 * :white_check_mark: optimize and minify HTML, CSS, and JavaScript (built-in to parcel)
 * :white_check_mark: autoprefix CSS for better browser compatibility (via postcss)
 * :white_check_mark: transpile CSS 4 syntax (via postcss)
@@ -15,7 +15,7 @@ My intent in this spike is to begin moving towards a realistic boilerplate, addi
 * :white_check_mark: turn "Loading..." into an animated component
 * :white_check_mark: use CSS vars for theming
 * :white_check_mark: manipulate the theming dynamically using JavaScript
-* set page-level metadata for SEO
+* :white_check_mark: set page-level metadata for SEO
 * :white_check_mark: maintain async loading of scripts (parcel respects it when updating the link)
 * :x: inline critical CSS; load the rest through JavaScript if necessary (saving for future project)
 * get a better score on [PageSpeed](https://developers.google.com/speed/pagespeed/insights/) than [`react-dead-simple`](https://github.com/debradley/react-dead-simple)
@@ -31,7 +31,7 @@ My intent in this spike is to begin moving towards a realistic boilerplate, addi
 
 `yarn start` - runs parcel in development mode in the foreground at http://localhost:1234/ (change the port by editing the script to use parcel's `-p` argument, i.e. `-p 3000`)
 
-`yarn run build` - create a production build in `docs`. Note that the built files are in version control so they can be picked up by GitHub pages.
+`yarn run build` - create a production build in `dist`.
 
 ## Process
 
@@ -65,7 +65,7 @@ Refactor the inline JS to individual components in `src/components`.
 
 Make these components import CSS into JavaScript. This isn't css-in-js, but it does let the CSS be post-processed and hot reloaded.
 
-Remove scripts from HTML; parcel uses the template in `src/app/index.html` to insert the generated script into `docs/index.html`.
+Remove scripts from HTML; parcel uses the template in `src/app/index.html` to insert the generated script into `dist/index.html`.
 
 ## Lessons Learned
 
@@ -79,7 +79,7 @@ Parcel doesn't run eslint—that's up to you in package.json.
 
 Parcel builds the CSS and inserts a `link` in the generated HTML, but doesn't let you add an `media` attribute to it.
 
-GitHub Pages only works if the index.html is in the project root or a docs folder; You can pass the `-d` flag to parcel to change its output directory.
+You can pass the `-d` flag to parcel to change its output directory.
 
 Most tools allow an optional `.json` suffix on their config files (which makes editors happy), but babel and browserlist don't (though babel 7 will allow .babelrc.js). Both of these files can be embedded in package.json, however, which lets your editor do syntax checking, though I'm not sure if it's otherwise better or worse than putting it in a separate file.
 
@@ -90,6 +90,8 @@ If you want to glob a set of files for eslint to check that glob needs to be quo
 One "how to" for parcel I saw (but can't find now) had a `module.hot` check in the bootstrapping component, which led me to believe I might have to change my components to be able to take advantage of hot reloading, but [it seems you only have to do that if you want to hook into the hot load lifecycle for some reason](https://parceljs.org/hmr.html).
 
 I had a question coming into this spike: parcel seems to be faster than webpack (should confirm) and to provide "good-enough" optimization for small projects, but when does it fall over? At what point is the additional complexity of webpack warranted? My tentative answer after the spike is that, for me, for now, webpack is probably always the better choice because it's more mature, better-documented, and more flexible, and what you need for a minimally effective webpack configuration is [really quite small](https://react.christmas/20). If you start with parcel but then need to turn it into a "real" project, you'll end up moving to webpack. But even if your project is only ever just for fun, parcel doesn't save you much. I plan to test this theory out in my next spike. I also expect webpack to incorporate ideas from parcel eventually.
+
+To use GitHub pages with your content in `docs`, [you can't follow the repository naming scheme `<username>.github.io` or `<orgname>.github.io`](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/) - this approach is apparently is only for use with custom domains.
 
 TODO: how does deployed size compare? How does load time compare?
 
