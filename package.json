@@ -1,9 +1,10 @@
 {
-  "name": "react-real-world-parcel",
+  "name": "react-parcel-boilerplate",
   "version": "1.0.0",
-  "description": "A learning spike for using parcel with a very simple React component with a realistic project setup.",
+  "description":
+    "A learning spike for using parcel with a very simple React component with a realistic project setup.",
   "main": "src/app/index.jsx",
-  "repository": "git@github.com:debradley/react-real-world-parcel.git",
+  "repository": "git@github.com:debradley/react-parcel-boilerplate.git",
   "author": "Dan Bradley <debradley@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -15,20 +16,9 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx}": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
-    ],
-    "src/**/*.css": [
-      "prettier --write",
-      "stylelint --fix",
-      "git add"
-    ],
-    "src/**/*.{json,md}": [
-      "prettier --write",
-      "git add"
-    ]
+    "src/**/*.{js,jsx}": ["eslint --fix", "prettier --write", "git add"],
+    "src/**/*.css": ["prettier --write", "stylelint --fix", "git add"],
+    "src/**/*.{json,md}": ["prettier --write", "git add"]
   },
   "dependencies": {
     "normalize.css": "^7.0.0",
