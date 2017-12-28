@@ -18,7 +18,7 @@ My intent in this spike is to begin moving towards a realistic boilerplate, addi
 * :white_check_mark: set page-level metadata for SEO
 * :white_check_mark: maintain async loading of scripts (parcel respects it when updating the link)
 * :x: inline critical CSS; load the rest through JavaScript if necessary (saving for future project)
-* get a better score on [PageSpeed](https://developers.google.com/speed/pagespeed/insights/) than [`react-dead-simple`](https://github.com/debradley/react-dead-simple)
+* :white_check_mark: get a better score on [PageSpeed](https://developers.google.com/speed/pagespeed/insights/) than [`react-dead-simple`](https://github.com/debradley/react-dead-simple)
 
 ## Resources
 
@@ -93,25 +93,26 @@ I had a question coming into this spike: parcel seems to be faster than webpack 
 
 To use GitHub pages with your content in `docs`, [you can't follow the repository naming scheme `<username>.github.io` or `<orgname>.github.io`](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/) - this approach is apparently is only for use with custom domains.
 
-TODO: how does deployed size compare? How does load time compare?
+By all metrics, `react-parcel-boilerplate`, unsurprisingly, is smaller and faster than `react-dead-simple`:
 
-react-dead-simple
-https://www.webpagetest.org
-Page size: 559k
-Total load time: 2.6s
+| Metric                 | react-dead-simple | react-parcel-boilerplate |
+| ---------------------- | ----------------- | ------------------------ |
+| Page size              | 557k              | 62k                      |
+| Load time              | 2.143s            | 1.128s                   |
+| PageSpeed: mobile      | 76/100            | 84/100                   |
+| PageSpeed: desktop     | 84/100            | 94/100                   |
+| Lighthouse Performance | 53                | 95                       |
+| First paint            | 6710ms            | 2110ms                   |
+| First interactive      | 7410ms            | 2390ms                   |
 
-Lighthouse
-Performance: 60
-first paint: 6000ms
-First interactive: 6240ms
+I'm also noting some metrics from parcel, for future comparison against webpack:
 
-react-parcel-boilerplate
-Lighthouse
-Performance: 81
-first paint: 2,260ms
-First interactive: 5,570ms
-
-build time: first=6.76s, subsequent=1.5-1.6s
+| Metric             | Result   |
+| ------------------ | -------- |
+| Full build         | 6-7s     |
+| Incremental builds | 1.5-1.6s |
+| CSS size           | 3.3k     |
+| JS size            | 132k     |
 
 I was unsure whether my app should wait for `DOMContentLoaded` before loading and went down a rabbit hole of (useful) research that I will document elsewhere, but, while I am still not 100% sure, I believe that the right approach for this project is to mark the script as `async` and wait on `window.load`, based on the following:
 
@@ -136,6 +137,8 @@ Hot loading of JSX often always fails in parcel (though CSS seems to work); relo
 The amount of configuration required for this simple project shows that boilerplates are still very helpful, even with tools like parcel. But is it better to clone a repo like this one, to use something like [create-react-app](https://github.com/facebookincubator/create-react-app), or to build a generator with [yeoman](http://yeoman.io/)?
 
 I built a Spinner component, but of course it can't actually replace the initial "Loading..." message until the script in which it exists has loaded, making it useless for that scenario. I could inline the spinner CSS, but doing that with postcss support isn't something parcel supports. I'll work on dynamic imports and inlining critical CSS in a future project with [critical](https://github.com/addyosmani/critical) and [loadCSS](https://github.com/filamentgroup/loadCSS/).
+
+It seems as if the metatags being set by Helmet aren't useful to Google/Facebook/Twitter. They may need to be server-side rendered?
 
 Next spike:
 
