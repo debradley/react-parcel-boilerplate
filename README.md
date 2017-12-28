@@ -121,7 +121,7 @@ I was unsure whether my app should wait for `DOMContentLoaded` before loading an
 * this script does depend on the existence of a specific DOM element (so it must load after it exists)
 * an async script will definitely run before `window.load`, but possibly no sooner (`DOMContentLoaded` could fire before the script runs)
 
-The downside to this approach is that it defers script execution until the last possible moment, so we get a possibly-longer-than-necessary "FUOC".
+The downside to this approach is that it defers script execution until the last possible moment, so we get a possibly-longer-than-necessary [FUOC](https://en.wikipedia.org/wiki/Flash_of_unstyled_content).
 
 ## TODO
 
